@@ -1,6 +1,6 @@
-import zeroaq
-import miraclelegendz
-import asworld
+import scrapers.zeroaq as zeroaq
+import scrapers.miraclelegendz as miraclelegendz
+import scrapers.asworld as asworld
 
 def main():
 

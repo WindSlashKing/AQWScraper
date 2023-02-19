@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import httpx
 
 import json
+import os
 
 CLIENT = httpx.Client()
 
@@ -42,7 +43,7 @@ def scrape_no_requirements_quests():
         if not has_requirements:
             no_requirements[quest_name] = link
 
-    save_results("asworld.json", no_requirements)
+    save_results(os.path.join("scraped_data", "asworld.json"), no_requirements)
     
 def save_results(filename, results: dict[str, str]):
     with open(filename, "w", encoding="utf-8") as f:
