@@ -1,20 +1,18 @@
+import asyncio
+
 import scrapers.zeroaq as zeroaq
-import scrapers.miraclelegendz as miraclelegendz
 import scrapers.asworld as asworld
 
-def main():
+async def main():
 
     print("(1) Scrape zeroaq.com")
-    print("(2) Scrape miraclelegendz.online")
-    print("(3) Scrape as-world.org")
+    print("(2) Scrape as-world.org")
     choice = input("> ")
     
     if "1" in choice:
-        zeroaq.scrape_no_requirements_quests()
+        await zeroaq.scrape_no_requirements_quests()
     elif "2" in choice:
-        miraclelegendz.scrape_no_requirements_quests()
-    elif "3" in choice:
-        asworld.scrape_no_requirements_quests()
+        await asworld.scrape_no_requirements_quests()
     else:
         print("Invalid input")
         input("Press enter to exit...")
@@ -23,4 +21,5 @@ def main():
     print("Done!")
 
 if __name__ == "__main__":
-    main()
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.get_event_loop().run_until_complete(main())
